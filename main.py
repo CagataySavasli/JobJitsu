@@ -1,6 +1,7 @@
 import streamlit as st
 from games import DigitspanGame, NumerosityGame, ShapedanceGame
 
+
 def main():
     st.set_page_config(page_title="Cognitive Game Practice", layout="centered")
     st.title("🧠 Cognitive Game Practice App")
@@ -18,14 +19,18 @@ def main():
     }
 
     selected_game_class = game_mapping.get(game_choice)
+    if st.sidebar.button("Restart Game"):
+        st.session_state.clear()
+        st.rerun()
+
     if selected_game_class:
         game = selected_game_class()
         game.play()
     else:
         st.error("Invalid game selection.")
 
-    if st.sidebar.button("Restart Game"):
-        st.session_state.clear()
-        st.rerun()
+
+
+
 if __name__ == "__main__":
     main()
