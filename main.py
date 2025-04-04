@@ -24,5 +24,8 @@ def main():
     else:
         st.error("Invalid game selection.")
 
+    if st.sidebar.button("Restart Game"):
+        st.session_state.clear()
+        st.rerun()
 if __name__ == "__main__":
     main()
