@@ -1,5 +1,5 @@
 import streamlit as st
-from games import DigitspanGame, NumerosityGame, ShapedanceGame,FlashbackGame
+from games import DigitspanGame, NumerosityGame, ShapedanceGame,FlashbackGame,PathfinderGame
 
 
 def main():
@@ -9,14 +9,15 @@ def main():
     st.sidebar.title("Select a Game")
     game_choice = st.sidebar.selectbox(
         "Choose the game you want to play:",
-        ["Digitspan", "Numerosity", "Shapedance","FlashBack"]
+        ["Digitspan", "Numerosity", "Shapedance","FlashBack","Pathfinder"]
     )
 
     game_mapping = {
         "Digitspan": DigitspanGame,
         "Numerosity": NumerosityGame,
         "Shapedance": ShapedanceGame,
-        "FlashBack" : FlashbackGame
+        "FlashBack" : FlashbackGame,
+        "Pathfinder": PathfinderGame
     }
 
     selected_game_class = game_mapping.get(game_choice)
