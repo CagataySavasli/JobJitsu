@@ -123,14 +123,14 @@ class FlashbackGame:
                     self.generate_shape()
                     # Remain in init so that no comparison is attempted yet.
                     state["result_message"] = ""
-                    st.experimental_rerun()
+                    st.rerun()
             else:
                 # For subsequent rounds, generate the next shape and then move to display.
                 if st.button("Show Next Shape", key="next_shape"):
                     self.generate_shape()
                     state["stage"] = "display"
                     state["result_message"] = ""
-                    st.experimental_rerun()
+                    st.rerun()
         
         # Stage: display - Show the current shape briefly.
         elif state["stage"] == "display":
@@ -143,17 +143,17 @@ class FlashbackGame:
                 state["stage"] = "init"
             else:
                 state["stage"] = "input"
-            st.experimental_rerun()
+            st.rerun()
         
         # Stage: input - Ask the user for their response.
         elif state["stage"] == "input":
             st.write("Do the last two shapes match?")
             if st.button("Match", key="match_button"):
                 self.check_answer(True)
-                st.experimental_rerun()
+                st.rerun()
             if st.button("No Match", key="nomatch_button"):
                 self.check_answer(False)
-                st.experimental_rerun()
+                st.rerun()
         
         # Display any feedback messages.
         if state["result_message"]:
